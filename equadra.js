@@ -9,7 +9,11 @@ app.get("/", (req,rep)=>{
 app.post("/teste-post", (req,rep)=>{
     let nome = req.body.name;
     let email = req.body.email;
-    rep.send(nome + " - " + email);
+
+    let output = "<label for='name'>Informe o nome: </label>"+
+    "<input type='text' id='name' name='name' required"+
+    " minlength='4' maxlength='8' size='10'></input>";
+    rep.send(output);
 })
 
 app.listen(4000, ()=>{
