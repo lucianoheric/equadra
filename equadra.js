@@ -11,6 +11,7 @@ app.get("/", (req,rep)=>{
 })
 
 app.get("/user", (req,rep)=>{
+    const ret_user = user.selectAllUser;
     rep.end(user.selectAllUser[0]);
 })
 
@@ -26,6 +27,19 @@ app.post("/teste-post", (req,rep)=>{
 
 
 app.listen(4000, ()=>{
+
+    (async () => {
+        const db = require("./models/user");
+        console.log('Começou!');
+     
+        console.log('SELECT * FROM CLIENTES');
+        const users = await db.selectAllUser();
+        console.log(users);
+    })();
+       
     console.log("Server running in port 4000");
 })
+
+
+
 
